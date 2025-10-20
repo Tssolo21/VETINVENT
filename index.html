@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">VetInvent - Innovation Technologique pour l'Élevage</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Rénovation */
+        :root {
+            --primary-color: #007BFF; /* أزرق للتقنية */
+            --secondary-color: #28A745; /* أخضر للطبيعة والزراعة */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #FFFFFF;
+            --bg-gray: #f8f9fa;
+            --font-main: 'Poppins', sans-serif;
+            --font-ar: 'Cairo', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* تحديد اتجاه النص للغة العربية */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+            font-family: var(--font-ar);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* قائمة التنقل (Navbar) */
+        nav {
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* تنسيق الشعار النصي (تم إعادته) */
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            /* ✅ مهم جداً: استخدام flex لوضع الأيقونة والنص في سطر واحد */
+            display: flex; 
+            align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        /* تنسيق صورة الأيقونة */
+        .site-logo {
+            height: 60px; /* أصغر قليلاً من السابق ليتناسب مع النص */
+            width: auto;
+            margin-inline-end: 10px; /* ✅ إضافة مسافة بين الأيقونة والاسم */
+            display: block;
+        }
+
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 5px;
+            transition: color 0.3s;
+        }
+
+        body.rtl .lang-switcher button {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
+        .lang-switcher button.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* قسم البطل (Hero Section) */
+        #hero {
+            background-color: var(--bg-gray);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        #hero p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* قسم حول الشركة (About Section) */
+        #about {
+            padding: 80px 0;
+            background-color: var(--bg-gray); /* خلفية رمادية فاتحة للفصل عن الأقسام البيضاء */
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-grid {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start; /* محاذاة العناصر من الأعلى */
+            flex-wrap: wrap;
+        }
+        
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-services {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--bg-light); /* خلفية بيضاء داخل الرمادي لإبرازها */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-services h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+        }
+
+        .about-content .lead {
+            font-size: 1.25em;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .about-content h3 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+
+        .service-point {
+            margin-bottom: 25px;
+        }
+
+        .service-point i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-inline-end: 15px;
+            float: inline-start; /* لعرض الأيقونة والنص جنبًا إلى جنب */
+        }
+
+        .service-point h4 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.15em;
+        }
+
+        /* قسم التحديات (Challenges) */
+        #challenges {
+            padding: 80px 0;
+            background-color: var(--bg-gray);
+            text-align: center;
+        }
+
+        #challenges h2 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .challenge-item {
+            background-color: var(--bg-light);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .challenge-item i {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .challenge-item h3 {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .challenge-item p {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        /* قسم الأرقام (Metrics Section) */
+        #metrics {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        #metrics h2 {
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            color: var(--text-light);
+        }
+
+        .metrics-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .metric-item {
+            margin: 20px;
+            width: 250px;
+        }
+        
+        .metric-number {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: var(--text-light); /* إبراز الرقم باللون الأخضر */
+            display: block;
+            line-height: 1;
+        }
+        
+        .metric-item p {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        
+        /* قسم إبراز Ration Pro (Portfolio) */
+        #portfolio {
+            background-color: var(--bg-gray); /* استخدام الرمادي الفاتح */
+            color: var(--text-dark);          /* تغيير لون النص إلى الداكن ليناسب الخلفية الفاتحة */
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        #portfolio h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--primary-color); /* يمكن إبقاء العنوان بلون الأيقونات الأزرق */
+        }
+        
+        .ration-pro-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* قسم الخدمات (Services Section) */
+        #services {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        #services h2 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        #services .services-subtitle {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #666;
+        }
+
+        .service-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .service-card {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--bg-gray);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* لضمان تساوي الارتفاعات */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .services-cta {
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .services-cta p {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: #ccc;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* قسم الاتصال (Contact Section) */
+        #contact {
+            padding: 80px 0;
+            background-color: var(--bg-light); /* خلفية بيضاء لكسر اللون الأزرق */
+        }
+        
+        #contact h2 {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #contact p[data-key="contactSubtitle"] {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .contact-layout {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap; /* للسماح بالالتفاف على الشاشات الصغيرة */
+            justify-content: center;
+        }
+
+        .contact-form-container {
+            flex: 2;
+            min-width: 300px;
+            background-color: var(--bg-gray);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        
+        .contact-form-container h3, .contact-info h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* لضمان أن العرض يشمل البادينج */
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        /* تنسيق معلومات الاتصال الجانبية */
+        .contact-info p {
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+        
+        .contact-info i {
+            color: var(--secondary-color);
+            margin-inline-end: 10px;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .social-links a {
+            margin-inline-end: 15px;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="ltr">
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="VetInvent Logo" class="site-logo">
+                Vet<span>Invent</span>
+            </a>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">عربي</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <h1 data-key="heroTitle">VetInvent : L'Innovation Technologique au Service de l'Élevage.</h1>
+            <p data-key="heroSubtitle">Nous transformons le travail des vétérinaires et des éleveurs grâce à des solutions logicielles sur mesure : applications mobiles, plateformes web et logiciels PC.</p>
+            <a href="#contact" class="cta-btn" data-key="ctaButton">Demander une Consultation Gratuite</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-grid">
+            
+            <div class="about-content">
+                <h2 data-key="aboutTitle">VetInvent : حيث يلتقي الطب البيطري بالابتكار</h2>
+                <p class="lead" data-key="aboutLead">نحن لسنا مجرد شركة تقنية؛ نحن فريق من الأطباء البيطريين الشغوفين بالبرمجة، ملتزمون بتحويل القطاع الزراعي والبيطري من خلال حلول تقنية ذكية.</p>
+                
+                <h3 data-key="aboutMissionTitle">مهمتنا ورؤيتنا</h3>
+                <p data-key="aboutMission1">نشأنا من تجربة ميدانية مباشرة، حيث لاحظنا الصعوبات الكبيرة في التواصل بين الأطباء البيطريين والمربين، بالإضافة إلى العجز عن الوصول للإنتاجية القصوى بالأساليب التقليدية.</p>
+                <p data-key="aboutMission2">هدفنا هو سد هذه الفجوة بإنشاء برامج وتطبيقات تسهل العمل الإداري، وتحسن التسيير الزراعي، وترفع الإنتاج إلى أعلى المستويات الممكنة.</p>
+                
+                <a href="#services" class="cta-btn secondary-btn" data-key="aboutCta">اكتشف حلولنا</a>
+            </div>
+            
+            <div class="about-services">
+                <h3 data-key="aboutServicesTitle">ماذا نقدم؟</h3>
+                <div class="service-point">
+                    <i class="fas fa-cubes"></i>
+                    <h4 data-key="aboutService1Title">تطبيقات ومنصات خاصة بنا</h4>
+                    <p data-key="aboutService1Desc">نقوم بتطوير حزمة متكاملة من البرامج والأدوات التي صممناها داخلياً لمعالجة التحديات الأكثر شيوعاً في القطاع.</p>
+                </div>
+                <div class="service-point">
+                    <i class="fas fa-code-branch"></i>
+                    <h4 data-key="aboutService2Title">حلول مخصصة حسب الطلب</h4>
+                    <p data-key="aboutService2Desc">سواء كنت تحتاج لتطبيق إدارة مزرعة خاص، أو منصة ويب متطورة، نحن نقدم خدمة صناعة تطبيقات ومواقع مخصصة تناسب متطلباتك الفريدة.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="challenges">
+        <div class="container">
+            <h2 data-key="challengesTitle">Les Défis que Nous Relevons pour Vous</h2>
+            <div class="challenges-grid">
+                
+                <div class="challenge-item">
+                    <i class="fas fa-chart-line fa-2x"></i>
+                    <h3 data-key="chal1Title">Gestion des Données et de la Performance</h3>
+                    <p data-key="chal1Desc">Difficulté à analyser rapidement les données complexes de nutrition, de production ou de santé du troupeau.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <i class="fas fa-boxes fa-2x"></i>
+                    <h3 data-key="chal2Title">Optimisation de l'Inventaire (Stock)</h3>
+                    <p data-key="chal2Desc">Pertes dues à l'expiration des médicaments ou manque de visibilité sur les stocks d'aliments et de fournitures.</p>
+                </div>
+
+                <div class="challenge-item">
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                    <h3 data-key="chal3Title">Accès Mobile et Terrain</h3>
+                    <p data-key="chal3Desc">Absence d'outils numériques pour la saisie des observations et la consultation des dossiers en situation de mobilité.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="metrics">
+        <div class="container">
+            <h2 data-key="metricsTitle">Les Chiffres Qui Parlent pour Nous</h2>
+            <div class="metrics-grid">
+                
+                <div class="metric-item">
+                    <span class="metric-number" data-key="metric1Num">98%</span>
+                    <p data-key="metric1Desc">Taux de précision des calculs de Ration Pro</p>
+                </div>
+                
+                <div class="metric-item">
+                    <span class="metric-number" data-key="metric2Num">+30%</span>
+                    <p data-key="metric2Desc">Amélioration du rendement constatée chez nos clients tests</p>
+                </div>
+
+                <div class="metric-item">
+                    <span class="metric-number" data-key="metric3Num">3 en 1</span>
+                    <p data-key="metric3Desc">Solutions couvrant Mobile, Web et PC</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 data-key="portfolioTitle">Notre Réalisation Phare : Ration Pro</h2>
+            <p data-key="portfolioDesc">Ration Pro est l'application qui optimise l'alimentation de votre troupeau laitier. Un exemple concret de notre expertise en nutrition animale et en IA.</p>
+            <a href="https://ration-pro.vercel.app" target="_blank" class="ration-pro-link" data-key="portfolioLink">Voir le site de Ration Pro</a>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <h2 data-key="servicesTitle">Nos Solutions pour l'Industrie Animale</h2>
+            <p data-key="servicesSubtitle">VetInvent propose une gamme complète de solutions technologiques conçues spécifiquement pour répondre aux défis uniques des vétérinaires et des professionnels de l'élevage.</p>
+
+            <div class="service-cards-grid">
+                
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt fa-3x"></i>
+                    <h3 data-key="service1Title">Développement d'Apps Mobiles</h3>
+                    <p data-key="service1Desc">Des outils puissants et intuitifs pour la collecte de données, le diagnostic sur site, et la gestion des tâches directement depuis votre smartphone, que ce soit pour iOS ou Android.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-desktop fa-3x"></i>
+                    <h3 data-key="service2Title">Conception de Plateformes Web</h3>
+                    <p data-key="service2Desc">Création de systèmes de gestion en ligne sécurisés et évolutifs (SaaS) pour le suivi des stocks, la traçabilité des troupeaux et l'analyse de performance à grande échelle.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-laptop-code fa-3x"></i>
+                    <h3 data-key="service3Title">Logiciels PC Sur Mesure</h3>
+                    <p data-key="service3Desc">Développement de logiciels de bureau pour les besoins spécifiques, tels que l'analyse statistique avancée ou le contrôle des machines agricoles connectées.</p>
+                </div>
+                
+            </div>
+            
+            <div class="services-cta">
+                <p data-key="servicesCTAText">Prêt à moderniser votre travail ?</p>
+                <a href="#contact" class="cta-btn" data-key="ctaButtonService">Commencer un Projet</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2 data-key="contactTitle">Commencez Votre Projet Tech Aujourd'hui</h2>
+            <p data-key="contactSubtitle">Que ce soit pour une simple consultation gratuite ou pour lancer un projet complet, notre équipe est prête à discuter de vos besoins spécifiques en élevage ou en médecine vétérinaire.</p>
+
+            <div class="contact-layout">
+                
+                <<div class="contact-form-container">
+                    <h3 data-key="formHeader">Formulaire de Contact Rapide</h3>
+                    
+                    <form action="https://formspree.io/f/mwprjewj" method="POST" id="main-contact-form">
+                        
+                        <div class="form-group">
+                            <label for="name" data-key="formLabelName">Nom et Prénom (ou Société)</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-key="formLabelEmail">Adresse E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="subject" data-key="formLabelSubject">Sujet de la Demande</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected data-key="formOptionDefault">-- Choisissez le sujet --</option>
+                                <option value="Consultation Gratuite" data-key="formOptionConsult">Demander une Consultation Gratuite</option>
+                                <option value="Lancement de Projet" data-key="formOptionProject">Lancement d'un Nouveau Projet</option>
+                                <option value="Ration Pro Support" data-key="formOptionSupport">Support / Question sur Ration Pro</option>
+                                <option value="Autre" data-key="formOptionOther">Autre Demande</option>
+                            </select>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="message" data-key="formLabelMessage">Votre Message et Détails du Projet</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-btn" data-key="formSubmitBtn">Envoyer la Demande</button>
+                        
+                    </form>
+                    </div>
+                
+                <div class="contact-info">
+                    <h3 data-key="infoHeader">Coordonnées</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <span data-key="infoEmailText">E-mail Professionnel :</span>
+                        <br>
+                        <a href="mailto:inventvet@gmail.com">inventvet@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-whatsapp"></i> 
+                        <span data-key="infoWhatsappText">WhatsApp Contact :</span>
+                        <br>
+                        <a href="https://wa.me/21352099710?text=Je%20souhaite%20demander%20une%20consultation%20gratuite%20concernant%20VetInvent" target="_blank">WhatsApp</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> 
+                        <span data-key="infoLocationText">Localisation :</span>
+                        <br>
+                        <span data-key="infoLocationDetail">Algérie</span>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61581387481390" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VetInvent. Tous droits réservés.</p>
+            <p>
+                <a href="https://sites.google.com/view/vetinvent/" data-key="https://sites.google.com/view/vetinvent/">Politique de Confidentialité</a>
+                <a href="#contact" data-key="contactLink">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        // محتوى اللغة (اللغات الثلاث)
+        const translations = {
+            fr: {
+                pageTitle: "VetInvent - Innovation Technologique pour l'Élevage",
+                heroTitle: "VetInvent : L'Innovation Technologique au Service de l'Élevage.",
+                heroSubtitle: "Nous transformons le travail des vétérinaires et des éleveurs grâce à des solutions logicielles sur mesure : applications mobiles, plateformes web et logiciels PC.",
+                ctaButton: "Demander une Consultation Gratuite",
+                aboutTitle: "VetInvent : Là où la Médecine Vétérinaire Rencontre l'Innovation",
+                aboutLead: "Nous ne sommes pas qu'une entreprise technologique ; nous sommes une équipe de vétérinaires passionnés par le codage, engagés à transformer le secteur agricole et vétérinaire par des solutions technologiques intelligentes.",
+                aboutMissionTitle: "Notre Mission et Vision",
+                aboutMission1: "Issus d'une expérience de terrain, nous avons constaté les grandes difficultés de communication entre les vétérinaires et les éleveurs, ainsi que l'incapacité à atteindre une productivité maximale par les méthodes traditionnelles.",
+                aboutMission2: "Notre objectif est de combler ce fossé en créant des logiciels et applications qui simplifient la gestion, optimisent l'administration des fermes, et élèvent la production au plus haut niveau possible.",
+                aboutCta: "Découvrez nos Solutions",
+                aboutServicesTitle: "Ce Que Nous Offrons",
+                aboutService1Title: "Applications et Plateformes Propres",
+                aboutService1Desc: "Nous développons une suite complète de logiciels et outils conçus en interne pour résoudre les défis les plus courants du secteur.",
+                aboutService2Title: "Solutions Personnalisées Sur Demande",
+                aboutService2Desc: "Que vous ayez besoin d'une application de gestion de ferme spécifique ou d'une plateforme web sophistiquée, nous offrons un service de création d'applications et de sites web sur mesure.",
+                challengesTitle: "Les Défis que Nous Relevons pour Vous",
+                chal1Title: "Gestion des Données et de la Performance",
+                chal1Desc: "Difficulté à analyser rapidement les données complexes de nutrition, de production ou de santé du troupeau.",
+                chal2Title: "Optimisation de l'Inventaire (Stock)",
+                chal2Desc: "Pertes dues à l'expiration des médicaments ou manque de visibilité sur les stocks d'aliments et de fournitures.",
+                chal3Title: "Accès Mobile et Terrain",
+                chal3Desc: "Absence d'outils numériques pour la saisie des observations et la consultation des dossiers en situation de mobilité.",
+                metricsTitle: "Les Chiffres Qui Parlent pour Nous",
+                metric1Num: "98%",
+                metric1Desc: "Taux de précision des calculs de Ration Pro",
+                metric2Num: "+30%",
+                metric2Desc: "Amélioration du rendement constatée chez nos clients tests",
+                metric3Num: "3 en 1",
+                metric3Desc: "Solutions couvrant Mobile, Web et PC",
+                portfolioTitle: "Notre Réalisation Phare : Ration Pro",
+                portfolioDesc: "Ration Pro est l'application qui optimise l'alimentation de votre troupeau laitier. Un exemple concret de notre expertise en nutrition animale et en IA.",
+                portfolioLink: "Voir le site de Ration Pro",
+                privacyLink: "Politique de Confidentialité",
+                servicesTitle: "Nos Solutions pour l'Industrie Animale",
+                servicesSubtitle: "VetInvent propose une gamme complète de solutions technologiques conçues spécifiquement pour répondre aux défis uniques des vétérinaires et des professionnels de l'élevage.",
+                service1Title: "Développement d'Apps Mobiles",
+                service1Desc: "Des outils puissants et intuitifs pour la collecte de données, le diagnostic sur site, et la gestion des tâches directement depuis votre smartphone, que ce soit pour iOS ou Android.",
+                service2Title: "Conception de Plateformes Web",
+                service2Desc: "Création de systèmes de gestion en ligne sécurisés et évolutifs (SaaS) pour le suivi des stocks، la traçabilité des troupeaux et l'analyse de performance à grande échelle.",
+                service3Title: "Logiciels PC Sur Mesure",
+                service3Desc: "Développement de logiciels de bureau pour les besoins spécifiques, tels que l'analyse statistique avancée ou le contrôle des machines agricoles connectées.",
+                servicesCTAText: "Prêt à moderniser votre travail ?",
+                ctaButtonService: "Commencer un Projet",
+                contactTitle: "Commencez Votre Projet Tech Aujourd'hui",
+                contactSubtitle: "Que ce soit pour une simple consultation gratuite ou pour lancer un projet complet, notre équipe est prête à discuter de vos besoins spécifiques en élevage ou en médecine vétérinaire.",
+                formHeader: "Formulaire de Contact Rapide",
+                formLabelName: "Nom et Prénom (ou Société)",
+                formLabelEmail: "Adresse E-mail",
+                formLabelSubject: "Sujet de la Demande",
+                formOptionDefault: "-- Choisissez le sujet --",
+                formOptionConsult: "Demander une Consultation Gratuite",
+                formOptionProject: "Lancement d'un Nouveau Projet",
+                formOptionSupport: "Support / Question sur Ration Pro",
+                formOptionOther: "Autre Demande",
+                formLabelMessage: "Votre Message et Détails du Projet",
+                formSubmitBtn: "Envoyer la Demande",
+                infoHeader: "Coordonnées",
+                infoEmailText: "E-mail Professionnel :",
+                infoWhatsappText: "WhatsApp Contact :",
+                infoLocationText: "Localisation :",
+                infoLocationDetail: "Algérie",
+                contactLink: "Contact"
+            },
+            en: {
+                pageTitle: "VetInvent - Technological Innovation for Animal Husbandry",
+                heroTitle: "VetInvent: Technological Innovation Serving Animal Husbandry.",
+                heroSubtitle: "We transform the work of veterinarians and breeders through custom software solutions: mobile applications, web platforms, and PC software.",
+                ctaButton: "Request a Free Consultation",
+                aboutTitle: "VetInvent: Where Veterinary Medicine Meets Innovation",
+                aboutLead: "We are not just a tech company; we are a team of veterinarians passionate about coding, dedicated to transforming the agricultural and veterinary sector through smart technological solutions.",
+                aboutMissionTitle: "Our Mission and Vision",
+                aboutMission1: "Born from direct field experience, we observed major difficulties in communication between veterinarians and breeders, alongside the inability to reach maximum productivity using traditional methods.",
+                aboutMission2: "Our goal is to bridge this gap by creating software and applications that simplify administrative work, optimize farm management, and raise production to the highest possible levels.",
+                aboutCta: "Discover Our Solutions",
+                aboutServicesTitle: "What We Offer",
+                aboutService1Title: "Our Own Applications and Platforms",
+                aboutService1Desc: "We develop a comprehensive suite of software and tools designed internally to address the most common sector challenges.",
+                aboutService2Title: "Custom Solutions On Demand",
+                aboutService2Desc: "Whether you need a specific farm management application or a sophisticated web platform, we offer a service for creating custom applications and websites tailored to your unique requirements.",
+                challengesTitle: "The Challenges We Solve for You",
+                chal1Title: "Data and Performance Management",
+                chal1Desc: "Difficulty in quickly analyzing complex data on nutrition, production, or herd health.",
+                chal2Title: "Inventory Optimization (Stock)",
+                chal2Desc: "Losses due to medication expiration or lack of visibility on feed and supply stocks.",
+                chal3Title: "Mobile and Field Access",
+                chal3Desc: "Lack of digital tools for recording observations and consulting records while on the move.",
+                metricsTitle: "The Numbers That Speak for Us",
+                metric1Num: "98%",
+                metric1Desc: "Ration Pro calculation accuracy rate",
+                metric2Num: "+30%",
+                metric2Desc: "Productivity improvement observed among our test clients",
+                metric3Num: "3 in 1",
+                metric3Desc: "Solutions covering Mobile, Web, and PC",
+                portfolioTitle: "Our Flagship Achievement: Ration Pro",
+                portfolioDesc: "Ration Pro is the application that optimizes the feeding of your dairy herd. A concrete example of our expertise in animal nutrition and AI.",
+                portfolioLink: "View the Ration Pro Website",
+                privacyLink: "Privacy Policy",
+                servicesTitle: "Our Solutions for the Animal Industry",
+                servicesSubtitle: "VetInvent offers a comprehensive range of technology solutions designed specifically to meet the unique challenges of veterinarians and livestock professionals.",
+                service1Title: "Mobile App Development",
+                service1Desc: "Powerful and intuitive tools for data collection, on-site diagnostics, and task management directly from your smartphone, for both iOS and Android.",
+                service2Title: "Web Platform Design",
+                service2Desc: "Creation of secure and scalable online management systems (SaaS) for inventory tracking, herd traceability, and large-scale performance analysis.",
+                service3Title: "Custom PC Software",
+                service3Desc: "Development of desktop software for specific needs, such as advanced statistical analysis or connected agricultural machinery control.",
+                servicesCTAText: "Ready to modernize your work?",
+                ctaButtonService: "Start a Project",
+                contactTitle: "Start Your Tech Project Today",
+                contactSubtitle: "Whether it's for a simple free consultation or to launch a full project, our team is ready to discuss your specific needs in animal husbandry or veterinary medicine.",
+                formHeader: "Quick Contact Form",
+                formLabelName: "Full Name (or Company)",
+                formLabelEmail: "Email Address",
+                formLabelSubject: "Subject of Inquiry",
+                formOptionDefault: "-- Choose the Subject --",
+                formOptionConsult: "Request a Free Consultation",
+                formOptionProject: "Start a New Project",
+                formOptionSupport: "Support / Question about Ration Pro",
+                formOptionOther: "Other Inquiry",
+                formLabelMessage: "Your Message and Project Details",
+                formSubmitBtn: "Send Request",
+                infoHeader: "Contact Details",
+                infoEmailText: "Professional Email:",
+                infoWhatsappText: "WhatsApp Contact:",
+                infoLocationText: "Location:",
+                infoLocationDetail: "Algeria",
+                contactLink: "Contact"
+            },
+            ar: {
+                pageTitle: "فيت إنفنت - الابتكار التكنولوجي لتربية الحيوان",
+                heroTitle: "فيت إنفنت (VetInvent): الابتكار التكنولوجي في خدمة تربية الحيوان.",
+                heroSubtitle: "نحن نحول عمل الأطباء البيطريين والمربين من خلال حلول برمجية مخصصة: تطبيقات الهاتف المحمول، ومنصات الويب، وبرامج الحاسوب.",
+                ctaButton: "اطلب استشارة مجانية",
+                aboutTitle: "فيت إنفنت (VetInvent): حيث يلتقي الطب البيطري بالابتكار",
+                aboutLead: "نحن لسنا مجرد شركة تقنية؛ نحن فريق من الأطباء البيطريين الشغوفين بالبرمجة، ملتزمون بتحويل القطاع الزراعي والبيطري من خلال حلول تقنية ذكية.",
+                aboutMissionTitle: "مهمتنا ورؤيتنا",
+                aboutMission1: "نشأنا من تجربة ميدانية مباشرة، حيث لاحظنا الصعوبات الكبيرة في التواصل بين الأطباء البيطريين والمربين، بالإضافة إلى العجز عن الوصول للإنتاجية القصوى بالأساليب التقليدية.",
+                aboutMission2: "هدفنا هو سد هذه الفجوة بإنشاء برامج وتطبيقات تسهل العمل الإداري، وتحسن التسيير الزراعي، وترفع الإنتاج إلى أعلى المستويات الممكنة.",
+                aboutCta: "اكتشف حلولنا",
+                aboutServicesTitle: "ماذا نقدم؟",
+                aboutService1Title: "تطبيقات ومنصات خاصة بنا",
+                aboutService1Desc: "نقوم بتطوير حزمة متكاملة من البرامج والأدوات التي صممناها داخلياً لمعالجة التحديات الأكثر شيوعاً في القطاع.",
+                aboutService2Title: "حلول مخصصة حسب الطلب",
+                aboutService2Desc: "سواء كنت تحتاج لتطبيق إدارة مزرعة خاص، أو منصة ويب متطورة، نحن نقدم خدمة صناعة تطبيقات ومواقع مخصصة تناسب متطلباتك الفريدة.",
+                challengesTitle: "التحديات التي نتغلب عليها من أجلك",
+                chal1Title: "إدارة البيانات والأداء",
+                chal1Desc: "صعوبة في التحليل السريع للبيانات المعقدة حول التغذية، الإنتاج أو صحة القطيع.",
+                chal2Title: "تحسين المخزون",
+                chal2Desc: "خسائر ناجمة عن انتهاء صلاحية الأدوية أو نقص الرؤية حول مخزونات الأعلاف والمستلزمات.",
+                chal3Title: "الوصول عبر الهاتف والتواجد الميداني",
+                chal3Desc: "عدم وجود أدوات رقمية لتسجيل الملاحظات والاطلاع على الملفات أثناء التنقل في الميدان.",
+                metricsTitle: "الأرقام التي تتحدث عنا",
+                metric1Num: "%98",
+                metric1Desc: "معدل دقة حسابات تطبيق Ration Pro",
+                metric2Num: "%30+",
+                metric2Desc: "تحسن في الإنتاجية لوحظ لدى عملائنا التجريبيين",
+                metric3Num: "3 في 1",
+                metric3Desc: "حلول تغطي الهاتف المحمول والويب والحاسوب الشخصي",
+                portfolioTitle: "إنجازنا البارز: Ration Pro",
+                portfolioDesc: "Ration Pro هو التطبيق الذي يحسن تغذية قطيعك الحلوب. مثال ملموس على خبرتنا في تغذية الحيوان والذكاء الاصطناعي.",
+                portfolioLink: "عرض موقع Ration Pro",
+                privacyLink: "سياسة الخصوصية",
+                servicesTitle: "حلولنا لصناعة الحيوان",
+                servicesSubtitle: "تقدم VetInvent مجموعة شاملة من الحلول التكنولوجية المصممة خصيصًا لتلبية التحديات الفريدة للأطباء البيطريين والمتخصصين في تربية الماشية.",
+                service1Title: "تطوير تطبيقات الهاتف المحمول",
+                service1Desc: "أدوات قوية وبديهية لجمع البيانات، التشخيص الموقعي، وإدارة المهام مباشرة من هاتفك الذكي، سواء لنظام iOS أو Android.",
+                service2Title: "تصميم منصات الويب",
+                service2Desc: "إنشاء أنظمة إدارة عبر الإنترنت آمنة وقابلة للتطوير (SaaS) لتتبع المخزون، وتتبع القطيع، وتحليل الأداء على نطاق واسع.",
+                service3Title: "برامج الحاسوب المخصصة",
+                service3Desc: "تطوير برامج سطح المكتب لتلبية الاحتياجات الخاصة، مثل التحليل الإحصائي المتقدم أو التحكم في الآلات الزراعية المتصلة.",
+                servicesCTAText: "هل أنت مستعد لتحديث سير عملك؟",
+                ctaButtonService: "ابدأ مشروعًا",
+                contactTitle: "ابدأ مشروعك التقني اليوم",
+                contactSubtitle: "سواء كانت لاستشارة مجانية بسيطة أو لإطلاق مشروع كامل، فإن فريقنا مستعد لمناقشة احتياجاتك المحددة في مجال تربية الحيوان أو الطب البيطري.",
+                formHeader: "نموذج اتصال سريع",
+                formLabelName: "الاسم الكامل (أو الشركة)",
+                formLabelEmail: "البريد الإلكتروني",
+                formLabelSubject: "موضوع الطلب",
+                formOptionDefault: "-- اختر الموضوع --",
+                formOptionConsult: "اطلب استشارة مجانية",
+                formOptionProject: "إطلاق مشروع جديد",
+                formOptionSupport: "دعم / سؤال حول Ration Pro",
+                formOptionOther: "طلب آخر",
+                formLabelMessage: "رسالتك وتفاصيل المشروع",
+                formSubmitBtn: "إرسال الطلب",
+                infoHeader: "معلومات الاتصال",
+                infoEmailText: "البريد الإلكتروني المهني:",
+                infoWhatsappText: "للتواصل عبر واتساب:", 
+                infoLocationText: "الموقع:",
+                infoLocationDetail: "الجزائر",
+                contactLink: "اتصل بنا"
+            }
+        };
+
+        // دالة تغيير اللغة
+        function setLanguage(lang) {
+            // تحديث محتوى العناصر باستخدام data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // تحديث اتجاه النص (RTL/LTR)
+            const body = document.body;
+            if (lang === 'ar') {
+                body.classList.add('rtl');
+                body.classList.remove('ltr');
+            } else {
+                body.classList.remove('rtl');
+                body.classList.add('ltr');
+            }
+
+            // تحديث زر اللغة النشط
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.lang-btn[data-lang="${lang}"]').classList.add('active');
+            
+            // تحديث السمة lang للصفحة
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        // إعداد المستمعين لأزرار اللغة
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.lang-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const newLang = event.target.getAttribute('data-lang');
+                    setLanguage(newLang);
+                });
+            });
+            
+            // تعيين اللغة الافتراضية (الفرنسية) عند التحميل
+            setLanguage('fr'); 
+        });
+        
+// 2. كود AJAX للإرسال السلس عبر Formspree
+const contactForm = document.getElementById('main-contact-form');
+        const formStatus = document.createElement('div');
+        formStatus.style.marginTop = '20px';
+        formStatus.style.padding = '10px';
+        formStatus.style.textAlign = 'center';
+        formStatus.style.borderRadius = '5px';
+        
+        if (contactForm) {
+            contactForm.after(formStatus); // وضع عنصر الحالة بعد النموذج مباشرة
+            
+            contactForm.addEventListener("submit", async (event) => {
+                event.preventDefault(); // إيقاف الإرسال التقليدي
+
+                formStatus.textContent = "Envoi en cours...";
+                formStatus.style.backgroundColor = "#fff3cd"; // خلفية صفراء فاتحة
+                formStatus.style.color = "#856404";
+                
+                const data = new FormData(contactForm);
+                
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formStatus.textContent = "✅ Merci ! Votre demande a été envoyée avec succès. Nous vous répondrons bientôt.";
+                        formStatus.style.backgroundColor = "#d4edda"; // خلفية خضراء
+                        formStatus.style.color = "#155724";
+                        contactForm.reset(); // تفريغ حقول النموذج
+                    } else {
+                        // معالجة أخطاء Formspree أو الخادم
+                        formStatus.textContent = "❌ Désolé, une erreur est survenue lors de l'envoi. يرجى إعادة المحاولة.";
+                        formStatus.style.backgroundColor = "#f8d7da"; // خلفية حمراء
+                        formStatus.style.color = "#721c24";
+                    }
+                } catch (error) {
+                    formStatus.textContent = "❌ خطأ في الاتصال. تحقق من اتصالك بالإنترنت.";
+                    formStatus.style.backgroundColor = "#f8d7da";
+                    formStatus.style.color = "#721c24";
+                }
+            });
+        }
+
+        // ملاحظة: تم استخدام رموز Font Awesome كأماكن مؤقتة للرموز (fas fa-mobile-alt, fas fa-globe, fas fa-desktop). يجب استبدال "votre_kit_fontawesome_ici" بمعرف Kit الخاص بك أو استخدام صور SVG.
+    </script>
+</body>
+</html>
